@@ -1,0 +1,106 @@
+<odoo>
+  <data>
+
+    <!-- Master Komponen -->
+        <record id="master_komponen_view_form" model="ir.ui.view">
+          <field name="name">master.komponen.view.form</field>
+          <field name="model">master.komponen</field>
+          <field name="arch" type="xml">
+            <form string="Master Komponen">
+              <sheet>
+                <div class="oe_title">
+                  <h1>
+                    <field name="name" />
+                  </h1>
+                </div>
+                <group string="Komponen">
+                  <field name="nama_komponen" />
+                  <field name="waktu_pengerjaan" />
+                </group>
+              </sheet>
+            </form>
+          </field>
+        </record>
+
+    <record id="master_komponen_view_tree" model="ir.ui.view">
+      <field name="name">master.komponen.view.tree</field>
+      <field name="model">master.komponen</field>
+      <field name="arch" type="xml">
+        <tree string="Master Komponen">
+          <field name="name"/>
+          <field name="nama_komponen" />
+          <field name="waktu_pengerjaan" />
+        </tree>
+      </field>
+    </record>
+
+    <record id="master_komponen_action" model="ir.actions.act_window">
+      <field name="name">Master Komponen</field>
+      <field name="res_model">master.komponen</field>
+      <field name="view_mode">tree,form</field>
+      <field name="help" type="html">
+        <h1>Kosong</h1>
+      </field>
+    </record>
+
+    <!-- Master Item -->
+    <record id="master_item_view_form" model="ir.ui.view">
+      <field name="name">master.item.view.form</field>
+      <field name="model">master.item</field>
+      <field name="arch" type="xml">
+        <form string="Master Item">
+          <sheet>
+            <group string="Item">
+              <field name="nama_item" />
+              <field name="mulai_pengerjaan" />
+              <field name="bobot_persen" />
+            </group>
+            <notebook>
+              <page string="Komponen">
+                <field name="master_item_line" mode="tree" nolabel="1">
+                  <tree string="Komponen" editable="bottom">
+                    <field name="komponen_id" />
+                    <field name="quantity" />
+                  </tree>
+                </field>
+              </page>
+            </notebook>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    <record id="master_item_view_tree" model="ir.ui.view">
+      <field name="name">master.item.view.tree</field>
+      <field name="model">master.item</field>
+      <field name="arch" type="xml">
+        <tree string="Master Item">
+          <header>
+            <button string="Custom Import" name="action_custom_import" type="object" class="oe_highlight"/>
+          </header>
+          <field name="nama_item" />
+          <field name="komponen_id" />
+          <field name="bobot_persen"/>
+          <field name="mulai_pengerjaan"/>
+        </tree>
+      </field>
+    </record>
+
+    <record id="master_item_action" model="ir.actions.act_window">
+      <field name="name">Master Item</field>
+      <field name="res_model">master.item</field>
+      <field name="view_mode">tree,form</field>
+      <field name="help" type="html">
+        <h1>Kosong</h1>
+      </field>
+    </record>
+
+
+    <!-- Menu -->
+    <menuitem id="menu_dashboard_komponen" name="Komponen" web_icon="komponen_odoo,static/icon.png"/>
+    <menuitem id="menu_bar_komponen" name="Komponen" parent="menu_dashboard_komponen"/>
+    <menuitem id="menu_item_master_komponen" name="Master Komponen" parent="menu_bar_komponen" action="master_komponen_action"/>
+    <menuitem id="menu_item_master_item" name="Master Item" parent="menu_bar_komponen" action="master_item_action"/>
+
+  </data>
+</odoo>

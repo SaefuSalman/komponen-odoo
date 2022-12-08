@@ -1,0 +1,16 @@
+<odoo>
+
+    <data>
+
+        <!-- sequence Master Komponen -->
+        <record id="seq_master_komponen" model="ir.sequence">
+            <field name="name">Master Komponen</field>
+            <field name="code">master.komponen</field>
+            <field name="prefix">PP/%(year)s/%(month)s/</field>
+            <field name="padding">3</field>
+        </record>
+
+    </data>
+
+
+</odoo>
